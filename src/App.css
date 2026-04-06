@@ -1,173 +1,328 @@
-@font-face {
-  font-family: 'Work Sans';
-  src: url('/fonts/WorkSans.ttf');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  src: url('/fonts/WorkSans.ttf');
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  src: url('/fonts/WorkSans.ttf');
-  font-weight: 700;
-}
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
 body {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  background-color: hsl(275, 100%, 97%);
+ font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-/* App wrapper */
+
 .app {
+  width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  position: relative;
-}
-
-/* Background image */
-.app::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background-image: url('/images/background-pattern-desktop.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
-  z-index: 0;
-}
-
-/* Card */
-.card {
-  position: relative;
-  z-index: 1;
-  background-color: hsl(0, 100%, 100%);
-  border-radius: 16px;
-  padding: 48px;
-  width: 700px;
-  margin: 30vh auto;
-}
-
-/* Header */
-.card-header {
-  display: flex;
   align-items: center;
-  gap: 16px;
+  padding: 24px;
+}
+
+.calculator {
+  width: 500px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 32px;
 }
 
-.card-header img {
-  width: 40px;
-  height: 40px;
+.logo {
+  font-size: 32px;
+  color: hsl(0, 100%, 100%);
 }
 
-.card-header h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: hsl(292, 42%, 14%); /* Purple 950 */
+.theme-toggle {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
 }
 
-/* FAQ Item */
-.faq-item {
-  padding: 20px 0;
-  border-bottom: 1px solid hsl(275, 100%, 97%); /* Purple 100 */
+.theme-label {
+  color: hsl(0, 100%, 100%);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
 }
 
-.faq-question {
+.theme-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-numbers {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 24px;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.theme-numbers span {
+  color: hsl(0, 100%, 100%);
+  font-size: 14px;
+}
+
+.toggle-track {
+  width: 72px;
+  height: 28px;
+  background-color: hsl(223, 31%, 20%);
+  border-radius: 50px;
+  padding: 4px;
   cursor: pointer;
 }
 
-.faq-question p {
-  font-size: 16px;
-  font-weight: 600;
-  color: hsl(292, 42%, 14%); 
-}
-.faq-question:hover p {
- color: hsl(292, 16%, 49%);
+.toggle-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: hsl(6, 63%, 50%);
+  border-radius: 50%;
 }
 
-.faq-question img {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
+.display {
+  background-color: hsl(224, 36%, 15%);
+  border-radius: 12px;
+  padding: 24px 32px;
+  text-align: right;
+  margin-bottom: 24px;
 }
 
-/* Answer */
-.faq-answer {
-  margin-top: 16px;
-  font-size: 16px;
-  font-weight: 400;
-  color: hsl(292, 16%, 49%); 
-  line-height: 1.6;
+.display-number {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: right;
+  color: hsl(0, 100%, 100%);
+  font-size: 52px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
 }
 
-/* Mobile 375px */
-@media (min-width: 375px) and (max-width: 1439px) {
-  .app::before {
-    background-image: url('/images/background-pattern-mobile.svg');
-    height: 35%;
-  }
-
-  .card {
-    width: 88%;
-    max-width: 680px;
-    border-radius: 12px;
-    padding: 24px;
-    margin: 25vh auto;
-  }
-
-  .card-header h1 {
-    font-size: 28px;
-  }
+.keypad {
+  background-color: hsl(223, 31%, 20%);
+  border-radius: 12px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
-/* Mobile 375px and below */
+/* BUTTONS*/
+.btn {
+  border: none;
+  border-radius: 8px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 16px;
+  text-align: center;
+}
+
+/* Number and operator buttons */
+.btn-number,
+.btn-operator {
+  background-color: hsl(0, 0%, 90%);
+  color: hsl(221, 14%, 31%);
+  box-shadow: 0 4px 0 hsl(28, 16%, 65%);
+}
+
+/* DEL button */
+.btn-del {
+  background-color: hsl(225, 21%, 49%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(224, 28%, 35%);
+  font-size: 24px;
+}
+
+/* RESET button - spans 2 columns */
+.btn-reset {
+  background-color: hsl(225, 21%, 49%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(224, 28%, 35%);
+  grid-column: span 2;
+  font-size: 24px;
+}
+
+/* EQUALS button - spans 2 columns */
+.btn-equals {
+  background-color: hsl(6, 63%, 50%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(6, 70%, 34%);
+  grid-column: span 2;
+  font-size: 24px;
+}
+
+/* HOVER STATES */
+.btn-number:hover,
+.btn-operator:hover {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.btn-del:hover,
+.btn-reset:hover {
+  background-color: hsl(225, 51%, 76%);
+}
+
+.btn-equals:hover {
+  background-color: hsl(6, 93%, 67%);
+}
+
+/* MOBILE */
 @media (max-width: 375px) {
-  .app::before {
-    background-image: url('/images/background-pattern-mobile.svg');
-    height: 35%;
-  }
-
-  .card {
-    width: 87%;
-    border-radius: 12px;
+  .calculator {
+    width: 100%;
     padding: 24px;
-    margin: 30vh auto;
   }
 
-  .card-header h1 {
-    font-size: 28px;
-  }
-}
-/* Desktop 1440px */
-@media (min-width: 1440px) {
-  .card {
-    width: 800px;
-    padding: 48px;
-    margin-top: 30vh auto;
+  .btn {
+    font-size: 24px;
+    padding: 12px;
   }
 
-  .card-header h1 {
+  .display-number {
     font-size: 36px;
   }
+}
+
+/* Toggle thumb positions */
+.toggle-thumb-1 {
+  transform: translateX(0px);
+  background-color: hsl(6, 63%, 50%);
+  transition: all 0.3s ease;
+}
+
+.toggle-thumb-2 {
+  transform: translateX(24px);
+  background-color: hsl(25, 98%, 40%);
+  transition: all 0.3s ease;
+}
+
+.toggle-thumb-3 {
+  transform: translateX(48px);
+  background-color: hsl(176, 100%, 44%);
+  transition: all 0.3s ease;
+}
+/* Theme 1 */
+.theme-1 {
+  background-color: hsl(222, 26%, 31%);
+}
+
+
+/*  THEME 2  */
+.theme-2 {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.theme-2 .logo {
+  color: hsl(60, 10%, 19%);
+}
+
+.theme-2 .theme-label {
+  color: hsl(60, 10%, 19%);
+}
+
+.theme-2 .theme-numbers span {
+  color: hsl(60, 10%, 19%);
+}
+
+.theme-2 .toggle-track {
+  background-color: hsl(0, 5%, 81%);
+}
+
+.theme-2 .display {
+  background-color: hsl(0, 0%, 93%);
+}
+
+.theme-2 .display-number {
+  color: hsl(60, 10%, 19%);
+}
+
+.theme-2 .keypad {
+  background-color: hsl(0, 5%, 81%);
+}
+
+.theme-2 .btn-number,
+.theme-2 .btn-operator {
+  background-color: hsl(0, 0%, 90%);
+  color: hsl(60, 10%, 19%);
+  box-shadow: 0 4px 0 hsl(35, 11%, 61%);
+}
+
+.theme-2 .btn-del,
+.theme-2 .btn-reset {
+  background-color: hsl(185, 42%, 37%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(185, 58%, 25%);
+}
+
+.theme-2 .btn-equals {
+  background-color: hsl(25, 98%, 40%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(25, 99%, 27%);
+}
+
+/*  THEME 3 */
+.theme-3 {
+  background-color: hsl(268, 75%, 9%);
+}
+
+
+.theme-3 .logo {
+  color: hsl(52, 100%, 62%);
+}
+
+.theme-3 .theme-label {
+  color: hsl(52, 100%, 62%);
+}
+
+.theme-3 .theme-numbers span {
+  color: hsl(52, 100%, 62%);
+}
+
+.theme-3 .toggle-track {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.theme-3 .display {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.theme-3 .display-number {
+  color: hsl(52, 100%, 62%);
+}
+
+.theme-3 .keypad {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.theme-3 .btn-number,
+.theme-3 .btn-operator {
+  background-color: hsl(268, 47%, 21%);
+  color: hsl(52, 100%, 62%);
+  box-shadow: 0 4px 0 hsl(290, 70%, 36%);
+}
+
+.theme-3 .btn-del,
+.theme-3 .btn-reset {
+  background-color: hsl(281, 89%, 26%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 0 hsl(285, 91%, 52%);
+}
+
+.theme-3 .btn-equals {
+  background-color: hsl(176, 100%, 44%);
+  color: hsl(198, 20%, 13%);
+  box-shadow: 0 4px 0 hsl(177, 92%, 70%);
 }
